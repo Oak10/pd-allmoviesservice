@@ -52,7 +52,7 @@ pipeline {
             }
             steps {
                 sshagent(['ubuntulocalhost']) {
-                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/prod/hosts.yml --diff pd-ansible/playbooks/pd-allmoviesservice-swarm.yml --extra-vars \"allmoviesservice_tag=$TAG_NAME\"'"
+                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/prod/hosts.yml --diff pd-ansible/playbooks/allmoviesservice-swarm.yml --extra-vars \"allmoviesservice_tag=$TAG_NAME\"'"
                 } 
             }
         }
@@ -62,7 +62,7 @@ pipeline {
             }
             steps {
                 sshagent(['ubuntulocalhost']) {
-                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/dev/hosts.yml --diff pd-ansible/playbooks/pd-allmoviesservice-swarm.yml --extra-vars \"allmoviesservice_tag=dev-$BUILD_NUMBER\"'"
+                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/dev/hosts.yml --diff pd-ansible/playbooks/allmoviesservice-swarm.yml --extra-vars \"allmoviesservice_tag=dev-$BUILD_NUMBER\"'"
                 } 
             }
         }
